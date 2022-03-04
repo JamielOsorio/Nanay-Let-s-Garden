@@ -489,6 +489,13 @@ body {
   font-size: 1.2em;
 }
 
+@media (max-width: 750px) {
+  .cart-item-title {
+    width: 50%;
+    font-size: 0.8em;
+  }
+}
+
 .cart-item-image {
   width: 75px;
   height: auto;
@@ -544,9 +551,11 @@ body {
 .cart-total-price {
   color: #333;
   font-size: 1.1em;
+  width: 15%;
 }
 
-.btn-purchase {
+.btn-purchase,
+.btn-addItem {
   display: block;
   margin: 40px auto 80px auto;
   font-size: 1.75em;
@@ -558,9 +567,13 @@ body {
   font-size: 1.75em;
 }
 
-@media (max-width: 410px) {
+@media (max-width: 450px) {
   .cart-item-image {
     width: 30px;
+  }
+  .cart-total-price {
+    font-size: 0.9em;
+    width: 15%;
   }
 }
 
@@ -663,7 +676,7 @@ body {
   border-radius: 10px;
 }
 
-.reginfo .close {
+/* .reginfo .close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -675,7 +688,7 @@ body {
   line-height: 15px;
   border-radius: 15px;
   cursor: pointer;
-}
+} */
 
 .animate {
   -webkit-animation: animatezoom 0.6s;
@@ -708,4 +721,269 @@ body {
 .image .img {
   width: 40%;
   border-radius: 50%;
+}
+
+/* ===============START OF ADMIN============== */
+.child-container {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.to-deliver {
+  width: 100%;
+  min-height: 60vh;
+  background: #5baba0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ordertable {
+  border-color: #222;
+  border-collapse: collapse;
+  width: 75%;
+}
+
+.ordertable th {
+  color: #fff;
+}
+
+.ordertable td {
+  color: #fff;
+  font-size: 1em;
+  padding: 1em;
+  text-align: center;
+}
+
+.btn-orderdone {
+  background: #2d9cdb;
+  border-radius: 0.5em;
+  font-size: 1em;
+}
+
+tr {
+  transition: all ease-in-out 0.25s;
+}
+
+.selected {
+  background-color: blue;
+  color: #fff;
+  font-weight: bold;
+}
+
+@media (max-width: 770px) {
+  .ordertable td {
+    padding: 0.8em;
+  }
+}
+
+@media (max-width: 750px) {
+  .ordertable th {
+    font-size: 0.9em;
+  }
+
+  .ordertable td {
+    font-size: 0.6em;
+  }
+
+  .btn-orderdone {
+    font-size: 0.6em;
+  }
+}
+
+@media (max-width: 500px) {
+  .ordertable th {
+    font-size: 0.6em;
+  }
+
+  .ordertable td {
+    font-size: 0.4em;
+  }
+
+  .btn-orderdone {
+    font-size: 0.4em;
+  }
+}
+
+@media (max-width: 400px) {
+  .ordertable th {
+    font-size: 0.4em;
+  }
+}
+
+@media (max-width: 280px) {
+  .ordertable th {
+    font-size: 0.2em;
+  }
+
+  .ordertable td {
+    font-size: 0.2em;
+  }
+
+  .btn-orderdone {
+    font-size: 0.2em;
+  }
+}
+
+/* ==================START OF PROFILE================ */
+.wrapp {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  height: 65%;
+}
+
+.wrapp .lef {
+  width: 35%;
+  background: linear-gradient(
+    349deg,
+    rgba(235, 244, 242, 1) 0%,
+    rgba(186, 243, 246, 1) 24%,
+    rgba(173, 223, 216, 1) 63%,
+    rgba(134, 230, 163, 1) 100%
+  );
+  padding: 5% 10%;
+  border-top-left-radius: 2%;
+  border-bottom-left-radius: 1%;
+  text-align: center;
+  color: #fff;
+}
+
+.wrapp .lef img {
+  border-radius: 1%;
+  margin-bottom: 1.5%;
+}
+
+.wrapp .lef label {
+  margin-bottom: 1.5%;
+}
+
+.wrapp .lef input[type="text"] {
+  font-size: 1.7%;
+}
+
+.wrapp .righ {
+  width: 70%;
+  background: #fff;
+  padding: 1% 5%;
+  border-top-right-radius: 1%;
+  border-bottom-right-radius: 1.5%;
+}
+
+.wrapp .righ .infoprof,
+.wrapp .righ .projects {
+  margin-bottom: 1.7%;
+}
+
+.wrapp .righ .infoprof h3,
+.wrapp .righ .projects h3 {
+  margin-bottom: 3%;
+  padding-bottom: 2%;
+  border-bottom: 10% solid #e0e0e0;
+  color: #353c4e;
+  font-size: 1.5vw;
+  text-transform: uppercase;
+  letter-spacing: 50%;
+}
+
+.wrapp .righ .info_dataprof,
+.wrapp .righ .projects_data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapp .righ .info_dataprof .dataprof,
+.wrapp .righ .projects_data .dataprof {
+  width: 45%;
+}
+
+.wrapp .righ .info_dataprof .dataprof label,
+.wrapp .righ .projects_data .dataprof label {
+  color: #353c4e;
+  margin-bottom: 7%;
+  font-weight: 1000;
+  font-size: 1.25vw;
+}
+
+.wrapp .righ .info_dataprof .dataprof input[type="text"],
+.wrapp .righ .projects_data .dataprof input[type="text"] {
+  font-size: 2vw;
+  margin-bottom: 10%;
+  color: #919aa3;
+  width: 175%;
+}
+.wrapp .righ .info_dataprof .dataprof input[type="password"],
+.wrapp .righ .projects_data .dataprof input[type="password"] {
+  font-size: 2vw;
+  margin-bottom: 10%;
+  color: #919aa3;
+  width: 175%;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 0.5rem;
+  color: white;
+  background-color: #353c4e;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 100%;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.7;
+}
+.button2 {
+  width: 100%;
+  height: 1.5rem;
+  border: none;
+  outline: none;
+  background: #222;
+  color: #f5f5f5;
+  border-radius: 10px;
+}
+
+/* inventory admin */
+
+/* The Modal (background) */
+.modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s;
+}
+
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal {
+  background-color: white;
+  width: 30%;
+  height: 30%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

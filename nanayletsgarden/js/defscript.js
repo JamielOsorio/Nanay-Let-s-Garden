@@ -115,12 +115,15 @@ function ready() {
 }
 
 function purchaseClicked() {
-  alert("Thank you for purchasing!");
+  alert("Thank you for purchasing");
   var cartItems = document.getElementsByClassName("cart-items")[0];
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild);
-  }
-  updateCartTotal();
+  //needed. para di madelete lahat ng input bago masend data
+  setTimeout(function () {
+    while (cartItems.hasChildNodes()) {
+      cartItems.removeChild(cartItems.firstChild);
+    }
+    updateCartTotal();
+  }, 10000);
 }
 
 function removeCartItem(event) {
@@ -155,7 +158,7 @@ function addItemToCart(title, price, imageSrc) {
   var cartItems = document.getElementsByClassName("cart-items")[0];
   var cartItemNames = cartItems.getElementsByClassName("cart-item-title");
   for (var i = 0; i < cartItemNames.length; i++) {
-    if (cartItemNames[i].innerText == title) {
+    if (cartItemNames[i].value == title) {
       alert("You've already added this item to the cart");
       return;
     }
@@ -163,11 +166,11 @@ function addItemToCart(title, price, imageSrc) {
   var cartRowContents = `
       <div class="cart-item cart-column">
           <img class="cart-item-image" src="${imageSrc}" alt="" width="100" height="100">
-          <span class="cart-item-title">${title}</span>
+          <input class="cart-item-title" name="ordplant[]" value="${title}" readonly/>
       </div>
       <span class="cart-price cart-column">${price}</span>
       <div class="cart-quantity cart-column">
-          <input class="cart-quantity-input" type="number" value="1">
+          <input class="cart-quantity-input" type="number" name="ordquant[]" value="1">
           <button class="btn btn-danger" role="button">REMOVE</button>
       </div>`;
   cartRow.innerHTML = cartRowContents;
@@ -195,9 +198,7 @@ function updateCartTotal() {
     var quantity = quantityElement.value;
     total = total + price * quantity;
   }
-  // total = Math.round(total * 100) / 100;
-  document.getElementsByClassName("cart-total-price")[0].innerText =
-    "₱" + total;
+  document.getElementsByClassName("cart-total-price")[0].value = total;
 }
 
 //if user is not logged in and pressed "add to cart", send to logreg
@@ -205,3 +206,5 @@ function sendTologreg() {
   document.location.href = "LogReg.php";
   alert("Please login first before purchasing!");
 }
+
+//================START OF ADMIN===============

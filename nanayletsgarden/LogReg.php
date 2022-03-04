@@ -45,7 +45,7 @@
         </div>
 
         <div class="login-element">
-          <span class="pass"><a href="#">Tandaan mo Password mo</a></span>
+          
         </div>
         <div class="login-element">
           <span onclick="document.getElementById('login').style.display='none'"><a href="#"class="show"onclick=document.getElementById('register').style.display='block'>Register</a></span>

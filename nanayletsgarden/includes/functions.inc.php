@@ -83,7 +83,7 @@ function createUser($conn, $email, $username, $address, $pwd) {
     mysqli_stmt_bind_param($stmt, "ssss", $email, $username, $address, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../HomePage.php?error=none");
+    header("location: ../LogReg.php?regerror=none");
     exit();
 }
 
@@ -116,11 +116,51 @@ function loginUser($conn, $username, $pwd) {
         header("location: ../LogReg.php?logerror=wronglogin");
         exit();
     }
+    
     else if ($checkPwd === true) {
         session_start();
         $_SESSION["userid"] = $uidExists["usersId"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
-        header("location: ../HomePage.php");
-        exit();
+        $_SESSION["useraddress"] = $uidExists["usersAddress"];
+
+        if ($_SESSION["useruid"] == "Admin") {
+            header("location: ../Admin.php");
+            exit();
+        }
+        else {
+            
+            header("location: ../HomePage.php");
+            exit();
+        }
+
+        
     }
 }
+
+function emptyCart($ordItems, $totalPrice, $ordUser, $ordDate, $ordAddrs) {
+    $result;
+    if (empty($ordItems) || empty ($totalPrice) || empty($ordUser) || empty($ordDate) || empty($ordAddrs)) {
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+}
+
+function placeOrder($conn, $ordItems, $totalPrice, $ordUser, $ordDate, $ordAddrs) {
+    $sql = "INSERT INTO orders (ordersItem, ordersPrice, ordersUser, ordersDate, ordersAddrs) VALUES (?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../OrderPage.php?ordererror=orderfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "sisss", $ordItems, $totalPrice, $ordUser, $ordDate, $ordAddrs);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../OrderPage.php?ordererror=none");
+    exit();
+}
+
+
