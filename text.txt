@@ -3,3 +3,4 @@ kinchay 1 tali
 bawang 20 pesos
 magic sarap 1
 
+patis 1
